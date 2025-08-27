@@ -1,0 +1,40 @@
+﻿@model EventEase.Models.Venues
+
+@{
+    ViewData["Title"] = "Add a Venue";
+}
+
+<h2>Please add a Venue</h2>
+
+<form asp-action="VenuesAdd" method="post">
+
+    <div style="width:200px">
+        <label asp-for="VenueName"></label>
+    </div>
+    <div style="width:200px">
+        <input asp-for="VenueName" />
+    </div>
+    <br />
+    <div style="width:200px">
+        <label asp-for="Location"></label>
+    </div>
+    <div style="width:200px">
+        <input asp-for="Location"/>
+    </div>
+    <br />
+    <div style="width:200px">
+        <label asp-for="Capacity"></label>
+    </div>
+    <div style="width:200px">
+        <input asp-for="Capacity" />
+    </div>
+    <br />
+    <div style="width:200px">
+        <label asp-for="Picture"></label>
+    </div>
+    <div style="width:200px">
+        <input asp-for="Picture" />
+    </div>
+    <br />
+    <button type="submit">Save</button>
+</form>

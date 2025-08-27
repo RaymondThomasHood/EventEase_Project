@@ -1,0 +1,33 @@
+﻿@model EventEase.Models.Events
+
+@{
+    ViewData["Title"] = "Add an Event";
+}
+
+<h2>Please add an Event</h2>
+
+<form asp-action="EventsAdd" method="post">
+
+    <div style="width:200px">
+        <label asp-for="EventName"></label>
+    </div>
+    <div style="width:200px">
+        <input asp-for="EventName" />
+    </div>
+    <br />
+    <div style="width:200px">
+        <label asp-for="EventDate"></label>
+    </div>
+    <div style="width:200px">
+        <input asp-for="EventDate" type="datetime-local"/>
+    </div>
+    <br />
+    <div style="width:200px">
+        <label asp-for="Description"></label>
+    </div>
+    <div style="width:200px">
+        <input asp-for="Description" />
+    </div>
+    <br />
+    <button type="submit">Save</button>
+</form>

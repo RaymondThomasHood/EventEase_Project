@@ -1,0 +1,49 @@
+﻿@model EventEase.Models.Venues
+
+@{
+    ViewData["Title"] = "Edit Venue";
+}
+
+<h2>Please edit a Venue</h2>
+
+<form asp-action="VenuesEdit" method="post" enctype="multipart/form-data">
+    <div style="width: 280px;">
+        <label asp-for="VenueName"></label>
+        <div>
+            <input asp-for="VenueName" />
+        </div>
+        <span asp-validation-for="VenueName" class="text-danger"></span>
+    </div>
+
+    <div style="width: 280px;">
+        <label asp-for="Location"></label>
+        <div>
+            <input asp-for="Location" />
+        </div>
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div style="width: 280px;">
+        <label asp-for="Capacity"></label>
+        <div>
+            <input asp-for="Capacity" type="number" />
+        </div>
+        <span asp-validation-for="Capacity" class="text-danger"></span>
+    </div>
+
+    <div style="width: 280px;">
+        <label asp-for="Picture">Picture</label>
+        <div>
+            <input asp-for="Picture"/>
+        </div>
+        <span asp-validation-for="Picture" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="VenueId" />
+
+    <button type="submit">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

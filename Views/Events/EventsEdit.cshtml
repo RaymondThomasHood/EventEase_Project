@@ -1,0 +1,41 @@
+﻿@model EventEase.Models.Events
+
+@{
+    ViewData["Title"] = "Edit Event";
+}
+
+<h2>Please edit an Event</h2>
+
+<form asp-action="EventsEdit" method="post">
+    <div style="width: 280px;">
+        <label asp-for="EventName"></label>
+        <div>
+            <input asp-for="EventName" />
+        </div>
+        <span asp-validation-for="EventName" class="text-danger"></span>
+    </div>
+
+    <div style="width: 280px;">
+        <label asp-for="EventDate"></label>
+        <div>
+            <input asp-for="EventDate" type="datetime-local" value="@Model.EventDate.ToString("yyyy-MM-ddTHH:mm")" />
+        </div>
+        <span asp-validation-for="EventDate" class="text-danger"></span>
+    </div>
+
+    <div style="width: 280px;">
+        <label asp-for="Description"></label>
+        <div>
+            <input asp-for="Description" />
+        </div>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="EventId" />
+
+    <button type="submit">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

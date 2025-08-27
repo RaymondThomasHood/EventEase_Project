@@ -1,0 +1,58 @@
+﻿@model List<Bookings>
+
+<h2>Bookings Available</h2>
+<br />
+
+<br />
+@if (Model == null)
+{
+    <p>Model is null.</p>
+}
+else if (!Model.Any())
+{
+    <p>Model is empty (no bookings).</p>
+}
+
+<table>
+    <thead>
+    <tr>
+        <th style="padding-right:10px; border : 2px solid Black">BookingID</th>
+        <th style="padding-right:10px; border : 2px solid Black">EventID</th>
+        <th style="padding-right:10px; border : 2px solid Black">VenueID</th>
+        <th style="padding-right:10px; border : 2px solid Black">BookingDate</th>
+            <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model != null && Model.Any())
+    {
+
+
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td style="padding-right:10px; border : 2px solid Black">@booking.BookingId</td>
+                <td style="padding-right:10px; border : 2px solid Black">@booking.EventId</td>
+                <td style="padding-right:10px; border : 2px solid Black">@booking.VenueId</td>
+                <td style="padding-right:10px; border : 2px solid Black">@booking.BookingDate.ToShortDateString()</td>
+                    <td>
+                         @{
+                            var deleteId = booking.BookingId;
+                        }
+                        @Html.Raw($"<script>console.log('Delete link ID: {deleteId}');</script>") 
+                        <a asp-action="BookingsEdit" asp-route-id="@booking.BookingId">Edit</a> |
+                        <a asp-action="BookingsDelete" asp-route-id="@booking.BookingId" onclick="return confirm('Are you sure you want to delete this booking?');">Delete</a>
+                    </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <p>No Bookings Added</p>
+    }
+    </tbody>
+</table>
+
+<br />
+<a asp-controller="Bookings" asp-action="BookingsAdd" class="btn btn-primary"> Add Bookings</a>
+

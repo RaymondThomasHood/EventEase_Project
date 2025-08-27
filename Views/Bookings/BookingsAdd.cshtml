@@ -1,0 +1,49 @@
+﻿@model EventEase.Models.Bookings
+
+@{
+    ViewData["Title"] = "Add Booking";
+}
+
+<h2>Please add a Booking</h2>
+
+<form asp-action="BookingsAdd" method="post">
+    <div style="width: 280px;">
+        <label asp-for="EventId"></label>
+        <div>
+            @{
+                var events = ViewBag.Events as IEnumerable<EventEase.Models.Events> ?? new List<EventEase.Models.Events>();
+                <select asp-for="EventId" asp-items="@(new SelectList(events, "EventId", "EventName"))">
+                    <option value="">-- Select an Event --</option>
+                </select>
+            }
+        </div>
+        <span asp-validation-for="EventId" class="text-danger"></span>
+    </div>
+
+    <div style="width: 280px;">
+        <label asp-for="VenueId"></label>
+        <div>
+            @{
+                var venues = ViewBag.Venues as IEnumerable<EventEase.Models.Venues> ?? new List<EventEase.Models.Venues>();
+                <select asp-for="VenueId" asp-items="@(new SelectList(venues, "VenueId", "VenueName"))">
+                    <option value="">-- Select a Venue --</option>
+                </select>
+            }
+        </div>
+        <span asp-validation-for="VenueId" class="text-danger"></span>
+    </div>
+
+    <div style="width: 280px;">
+        <label asp-for="BookingDate"></label>
+        <div>
+            <input asp-for="BookingDate" type="datetime-local" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+        </div>
+        <span asp-validation-for="BookingDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Add</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

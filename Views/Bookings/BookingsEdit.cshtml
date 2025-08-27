@@ -1,0 +1,41 @@
+﻿@model EventEase.Models.Bookings
+
+@{
+    ViewData["Title"] = "Edit a Booking";
+}
+
+<h2>Please edit a Bookings</h2>
+
+<form asp-action="BookingsEdit" method="post">
+    <div style="width: 200px;">
+        <label asp-for="EventId"></label>
+        <div>
+            <input asp-for="EventId" />
+        </div>
+        <span asp-validation-for="EventId" class="text-danger"></span>
+    </div>
+
+    <div style="width: 200px;">
+        <label asp-for="VenueId"></label>
+        <div>
+            <input asp-for="VenueId" />
+        </div>
+        <span asp-validation-for="VenueId" class="text-danger"></span>
+    </div>
+
+    <div style="width: 200px;">
+        <label asp-for="BookingDate"></label>
+        <div>
+            <input asp-for="BookingDate" type="datetime-local" value="@Model.BookingDate.ToString("yyyy-MM-ddTHH:mm")" />
+        </div>
+        <span asp-validation-for="BookingDate" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="BookingId" />
+
+    <button type="submit">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
